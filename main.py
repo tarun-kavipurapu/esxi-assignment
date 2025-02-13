@@ -122,13 +122,13 @@ class Server:
         for line in lines:
             line = line.strip()
             if 'state =' in line:
-                state = line.split('"')[1]
+                state = line.split('"')[1] if len(line.split('"')) > 1 else state
             elif 'progress =' in line:
-                progress = line.split('=')[1].strip()
+                progress = line.split('=')[1].strip() if len(line.split('=')) > 1 else progress
             elif 'startTime =' in line:
-                start_time = line.split('"')[1]
+                start_time = line.split('"')[1] if len(line.split('"')) > 1 else start_time
             elif 'completeTime =' in line:
-                end_time = line.split('"')[1]
+                end_time = line.split('"')[1] if len(line.split('"')) > 1 else end_time
         task_info = {
             'state': state,
             'progress': progress,
